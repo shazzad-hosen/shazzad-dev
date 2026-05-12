@@ -150,7 +150,7 @@ function Contact() {
                     onChange={handleChange}
                     required
                     type="text"
-                    placeholder="Ahmed Jisan"
+                    placeholder="Tom Riddle"
                     className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary"
                   />
                 </div>
@@ -163,7 +163,7 @@ function Contact() {
                     onChange={handleChange}
                     required
                     type="email"
-                    placeholder="ahmed@example.com"
+                    placeholder="riddle_w@example.com"
                     className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary"
                   />
                 </div>
