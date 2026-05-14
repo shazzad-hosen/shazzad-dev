@@ -9,20 +9,22 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const allowedOrigins = ENV.CLIENT_URL;
-
+const allowedOrigins = [ENV.CLIENT_URL];
 app.use(
   cors({
     origin: function (origin, callback) {
       if (!origin) return callback(null, true);
 
       const normalizedOrigin = origin.replace(/\/$/, "");
+      const isAllowed = allowedOrigins.some(
+        (url) => url.replace(/\/$/, "") === normalizedOrigin,
+      );
 
-      if (allowedOrigins.includes(normalizedOrigin)) {
-        return callback(null, true);
+      if (isAllowed) {
+        callback(null, true);
+      } else {
+        callback(new Error(`CORS Error: Origin ${origin} not allowed`));
       }
-
-      return callback(new Error("Not allowed by CORS"));
     },
     credentials: true,
   }),
