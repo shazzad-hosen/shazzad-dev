@@ -1,17 +1,15 @@
 import express from "express";
 import cors from "cors";
-import dotenv from "dotenv";
 import contactRoutes from "./routes/contact.js";
 import rateLimit from "express-rate-limit";
-
-dotenv.config();
+import { ENV } from "./utils/env.js";
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const allowedOrigins = [`${process.env.CLIENT_URL}`, "http://localhost:5173"];
+const allowedOrigins = ENV.CLIENT_URL;
 
 app.use(
   cors({
@@ -48,7 +46,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/contact", contactLimiter, contactRoutes);
 
-const PORT = process.env.PORT || 5000;
+const PORT = ENV.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
