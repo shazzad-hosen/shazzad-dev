@@ -1,34 +1,28 @@
-import { Resend } from "resend";
-
-console.log("RESEND KEY:", process.env.RESEND_API_KEY);
-
-const resend = new Resend(process.env.RESEND_API_KEY);
+import nodemailer from "nodemailer";
+import { ENV } from "./env.js";
 
 export const sendEmail = async ({ name, email, subject, message }) => {
-  const response = await resend.emails.send({
-    from: "onboarding@resend.dev",
-    to: "mdshazzadhosenzisan@gmail.com",
-    subject: subject || `Message from ${name}`,
-    replyTo: email,
-
-    html: `
-      <div style="font-family:sans-serif;line-height:1.6">
-        <h2>New Portfolio Message</h2>
-
-        <p><strong>Name:</strong> ${name}</p>
-
-        <p><strong>Email:</strong> ${email}</p>
-
-        <p><strong>Subject:</strong> ${subject}</p>
-
-        <p><strong>Message:</strong></p>
-
-        <div style="padding:12px;background:#f4f4f4;border-radius:8px">
-          ${message}
-        </div>
-      </div>
-    `,
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: ENV.EMAIL_USER,
+      pass: ENV.EMAIL_PASS,
+    },
   });
 
-  return response;
+  const mailOptions = {
+    from: `"Portfolio" <${ENV.EMAIL_USER}>`,
+    replyTo: email,
+    to: ENV.EMAIL_USER,
+    subject: subject.trim(),
+    text: message.trim(),
+    html: `<div>
+            <h3>New message from: ${email}</h3>
+            <p><strong>Subject:</strong> ${subject}</p>
+            <p><strong>Message:</strong></p>
+            <p>${message.replace(/\n/g, "<br>")}</p>
+           </div>`,
+  };
+
+  await transporter.sendMail(mailOptions);
 };
