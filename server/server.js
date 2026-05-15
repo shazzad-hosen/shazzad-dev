@@ -1,7 +1,6 @@
 import express from "express";
 import cors from "cors";
-import contactRoutes from "./routes/contact.js";
-import rateLimit from "express-rate-limit";
+import contactRoutes from "./routes/contact.route.js";
 import { ENV } from "./utils/env.js";
 
 const app = express();
@@ -32,21 +31,11 @@ app.use(
 
 app.set("trust proxy", 1);
 
-const contactLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 4,
-  message: {
-    message: "Too many requests. Please try again later.",
-  },
-  standardHeaders: true,
-  legacyHeaders: false,
-});
-
 app.get("/", (req, res) => {
   res.send("Backend running");
 });
 
-app.use("/api/contact", contactLimiter, contactRoutes);
+app.use("/api/contact", contactRoutes);
 
 const PORT = ENV.PORT || 5000;
 app.listen(PORT, () => {
