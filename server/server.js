@@ -9,6 +9,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const allowedOrigins = [ENV.CLIENT_URL];
+console.log(ENV.CLIENT_URL);
+
 app.use(
   cors({
     origin: function (origin, callback) {
