@@ -1,16 +1,72 @@
-# React + Vite
+# Shazzad Dev Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern full-stack developer portfolio built with React, Tailwind CSS, Node.js, and Express.js.
+This project showcases my skills, projects, and provides a fully functional contact system powered by a production-ready backend API.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Live Here
+https://shazzad.pro.bd
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ Features
 
-## Expanding the ESLint configuration
+* Modern responsive UI
+* Built with React + Vite
+* Tailwind CSS styling
+* Smooth section-based layout
+* Project showcase section
+* Skills section
+* Contact form with backend API
+* Email delivery using Resend
+* Express.js backend
+* Rate limiting for spam protection
+* Production deployment with Vercel + Render
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+* React
+* Vite
+* Tailwind CSS
+* Lucide React
+
+### Backend
+
+* Node.js
+* Express.js
+* Resend
+* Express Rate Limit
+* CORS
+
+### Deployment
+
+* Vercel (Frontend)
+* Render (Backend)
+
+---
+
+## 🔒 Security Features
+
+* Rate limiting protection
+* Secure API architecture
+* CORS configuration
+---
+
+## 📄 License
+
+This project is open source and available under the MIT License.
+
+---
+
+## 🙌 Acknowledgements
+
+* React
+* Tailwind CSS
+* Railway
+* Vercel
+* Resend
